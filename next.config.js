@@ -40,7 +40,7 @@ module.exports = withPlugins([
                 }
 
                 return rule;
-            })
+            });
 
             return config;
         }

@@ -3,7 +3,8 @@ import App, { Container } from 'next/app';
 
 // ant-design
 import 'antd/dist/antd.css';
-// import '@/static/style.css';
+import '@/static/style.css';
+
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 const { SubMenu } = Menu;
@@ -25,6 +26,8 @@ class MyApp extends App {
     //   return { pageProps }
     // }
 
+
+
     render() {
         const { Component, pageProps } = this.props;
 
@@ -40,11 +43,9 @@ class MyApp extends App {
                             style={{ lineHeight: '64px' }}
                         >
                             <Menu.Item key="1">nav 1</Menu.Item>
-                            <Menu.Item key="2">nav 2</Menu.Item>
-                            <Menu.Item key="3">nav 3</Menu.Item>
                         </Menu>
                     </Header>
-                    <Layout>
+                    <Layout hasSider>
                         <Sider width={200} style={{ background: '#fff' }}>
                             <Menu
                                 mode="inline"
