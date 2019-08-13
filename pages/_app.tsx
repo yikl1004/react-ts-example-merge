@@ -2,8 +2,8 @@ import React from 'react';
 import App, { Container } from 'next/app';
 
 // ant-design
-// import 'antd/dist/antd.css';\
-import '@/static/style.css';
+import 'antd/dist/antd.css';
+// import '@/static/style.css';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 const { SubMenu } = Menu;
