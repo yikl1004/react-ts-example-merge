@@ -1,0 +1,13 @@
+
+
+body {
+    height: 100%;
+
+    #__next {
+        height: 100%;
+
+        .ant-layout {
+            min-height: 100%;
+        }
+    }
+}
