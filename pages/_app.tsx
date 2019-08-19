@@ -9,7 +9,8 @@ import Aside from '@/components/common/aside'
 import '@/static/_style.scss'  // default style
 import 'antd/dist/antd.css' // ant-design
 
-import { GlobalContextProvider, GlobalContext, RootStore } from '@/store'
+import { GlobalContext, RootStore } from '@/store'
+import { Provider } from 'mobx-react'
 
 
 interface IState {
@@ -50,11 +51,11 @@ class MyApp extends App<IProps, IState> {
 
         return (
             <Container>
-                <GlobalContextProvider value={{ rootStore: store}}>
+                <Provider {...store}>
                     <Layout>
-                        <Header menus={store.menus}/>
+                        <Header/>
                         <Layout hasSider>
-                            <Aside menus={store.menus}/>
+                            <Aside/>
                             <Layout style={{ padding: '0 24px 24px' }}>
                                 <Breadcrumb style={{ margin: '16px 0' }}>
                                     <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -74,7 +75,7 @@ class MyApp extends App<IProps, IState> {
                             </Layout>
                         </Layout>
                     </Layout>
-                </GlobalContextProvider>
+                </Provider>
             </Container>
         );
     }

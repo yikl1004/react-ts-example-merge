@@ -1,13 +1,16 @@
-import { observable, action } from "mobx";
+import { observable, action, computed } from "mobx";
 import { IMenu } from "@/typings/menu";
+import autobind from "autobind-decorator";
 
 
 export interface IMenus {
     currentHeaderMenuIndex: string
     menus: IMenu[]
     changeIndex(idx: string): void
+    currentMenu: IMenu[]
 }
 
+@autobind
 class Menus implements IMenus {
     
     @observable currentHeaderMenuIndex: string = '1'
@@ -58,9 +61,14 @@ class Menus implements IMenus {
         }
     ]
 
-    @action.bound
-    changeIndex(idx: string): void {
-        this.currentHeaderMenuIndex = idx
+    @computed get currentMenu() {
+        return this.menus[+this.currentHeaderMenuIndex - 1].children || [];
+    }
+
+    @action
+    public changeIndex(idx: string): void {
+        console.log(this);
+        this.currentHeaderMenuIndex = idx;
     }
 }
 
