@@ -65,7 +65,6 @@ class MyApp extends App<IProps, IState> {
                 <Provider {...store}>
                     <DefaultLayout>
                         <Component {...pageProps} />
-                        {  }
                     </DefaultLayout>
                 </Provider>
             </Container>

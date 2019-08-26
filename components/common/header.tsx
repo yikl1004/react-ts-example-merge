@@ -31,6 +31,16 @@ class Header extends Component<IProps, IState> {
         }
     }
 
+    static getDerivedStateFromProps(next: IProps, old: IProps) {
+        if ( next !== old ) {
+            console.log(1111);
+            return {
+                menus: (next.menus as IMenus).menus,
+                currentHeaderMenuIndex: (next.menus as IMenus).currentHeaderMenuIndex
+            }
+        }
+    }
+
     onSelect(args: SelectParam) {
         if ( (this.props.menus as IMenus).changeIndex ) {
             (this.props.menus as IMenus).changeIndex(args.key) 

@@ -12,13 +12,13 @@ useStaticRendering(!process.browser);
 export class RootStore {
     menus: IMenus;
 
-    constructor(store: RootStore) {
+    constructor(store?: RootStore | undefined) {
         this.menus = createMenus(typeof store !== 'undefined' ? store.menus : null);
     }
 }
 
-export const initStore = (store: RootStore | undefined): RootStore =>
-    new RootStore(store as RootStore);
+export const initStore = (store?: RootStore): RootStore =>
+    new RootStore(store!);
 
 // on Server
 export const dehydrate = (store: RootStore) => 
