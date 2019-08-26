@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import autobind from 'autobind-decorator';
+import autobind from 'autobind-decorator'
 
 import { Layout, Breadcrumb } from 'antd'
-import Header from '@/components/common/header'
 import Aside from '@/components/common/aside'
+import Header from '@/components/common/header'
+
 
 @autobind
 export default class DefaultLayout extends Component {

@@ -2,13 +2,25 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import autobind from 'autobind-decorator'
 
-import { GlobalContext, RootStore } from '@/store'
+import { GlobalContext, RootStore, initStore } from '@/store'
 import { Provider } from 'mobx-react'
 
 import '@/static/_style.scss'  // default style
 import 'antd/dist/antd.css' // ant-design\
 
 import DefaultLayout from '@/components/container/DefaultLayout'
+
+import Router from 'next/router'
+import NProgress from 'nprogress';
+
+
+Router.events.on('routeChangeStart', url => {
+    console.log('Loading: ', url)
+    NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
+
 
 
 interface IState {
@@ -30,11 +42,12 @@ class MyApp extends App<IProps, IState> {
     // be server-side rendered.
     //
     static async getInitialProps(appContext: any) {
-        const store: RootStore = new RootStore();
-        
-        appContext.ctx.mobxStore = store
-
         let appProps = await super.getInitialProps(appContext)
+        const store: RootStore = initStore(undefined);
+
+        await store.menus.getMenusData()
+
+        appContext.ctx.mobxStore = store
     
         return {
             ...appProps,
@@ -45,13 +58,14 @@ class MyApp extends App<IProps, IState> {
 
     render() {
         const { Component, pageProps, initialStore } = this.props;
-        const store = process.browser ? new RootStore() : initialStore;
+        const store = process.browser ? initStore(initialStore) : initialStore;
 
         return (
             <Container>
                 <Provider {...store}>
                     <DefaultLayout>
                         <Component {...pageProps} />
+                        {  }
                     </DefaultLayout>
                 </Provider>
             </Container>
