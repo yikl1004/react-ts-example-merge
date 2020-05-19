@@ -1,7 +1,7 @@
 # TODO
 
-1.[ ] React lifecycle 정리(nextjs lifecycle 도 같이)
-2.[ ] 후.. 갈길이 멀군
+ - 1.[ ] React lifecycle 정리(nextjs lifecycle 도 같이)
+ - 2.[ ] 후.. 갈길이 멀군
 
 
 ## log
